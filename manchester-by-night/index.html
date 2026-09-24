@@ -1,1 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Manchester by Night — Player Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0908; --panel:#130f0e; --panel2:#1a1412; --line:#3a1e1c;
+    --ink:#e9e1d6; --ink-dim:#a99c8f; --ink-mute:#7d7168;
+    --accent:#b5121b; --accent-soft:#7a2a2b; --accent-glow:rgba(181,18,27,.18);
+    --gold:#c9a24a;
+    --serif:'Crimson Pro',Georgia,'Times New Roman',serif;
+    --display:'Cinzel',Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--serif);
+    line-height:1.6; font-size:16px;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -5%, var(--accent-glow), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 100% 10%, rgba(201,162,74,.08), transparent 55%);
+    background-attachment:fixed;
+  }
+  a{color:var(--gold);}
+  a:hover{color:var(--accent);}
+  ::selection{background:var(--accent-soft); color:#fff;}
+
+  header.hero{ padding: 48px 20px 28px; text-align:center; border-bottom:1px solid var(--line); }
+  header.hero .eyebrow{
+    font-family:var(--display); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px;
+  }
+  header.hero h1{
+    font-family:var(--display); font-weight:600; letter-spacing:.04em;
+    font-size:clamp(1.7rem,5vw,2.6rem); margin:0 0 8px; color:var(--ink);
+    text-shadow:0 0 30px var(--accent-glow);
+  }
+  header.hero p.sub{ font-style:italic; color:var(--ink-dim); max-width:640px; margin:0 auto; font-size:1rem; }
+
+  nav.tabs{
+    position:sticky; top:0; z-index:20;
+    background:rgba(10,9,8,.94); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs button{
+    flex:0 0 auto; background:none; border:none; color:var(--ink-mute);
+    font-family:var(--display); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    padding:16px 18px 13px; cursor:pointer; border-bottom:3px solid transparent;
+    white-space:nowrap; transition:color .15s ease, border-color .15s ease;
+  }
+  nav.tabs button:hover{color:var(--ink);}
+  nav.tabs button.active{color:var(--ink); border-bottom-color:var(--accent);}
+
+  main{max-width:900px; margin:0 auto; padding:36px 20px 80px;}
+  section.panel{display:none;}
+  section.panel.active{display:block; animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;}}
+
+  h2.section-title{
+    font-family:var(--display); font-weight:600; letter-spacing:.03em; font-size:1.4rem;
+    color:var(--gold); margin:0 0 6px; padding-bottom:12px; border-bottom:1px solid var(--line);
+  }
+  h2.section-title .num{color:var(--accent); font-size:.85em; margin-right:8px;}
+  h3{
+    font-family:var(--display); font-weight:600; letter-spacing:.08em; font-size:.9rem;
+    color:var(--ink); margin:32px 0 10px; text-transform:uppercase;
+  }
+  p{color:var(--ink); margin:0 0 14px; max-width:64ch;}
+  p.dim{color:var(--ink-dim);}
+  .lede{font-size:1.05rem; color:var(--ink-dim); font-style:italic; margin-bottom:24px;}
+
+  .callout{
+    background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:4px; padding:16px 18px; margin:18px 0;
+  }
+  .callout.gold{border-left-color:var(--gold);}
+  .callout h4{margin-top:0; color:var(--gold); font-size:.85rem; text-transform:uppercase; letter-spacing:.08em;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .resource-list{list-style:none; padding:0; margin:0;}
+  .resource-list li{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:14px 16px; margin-bottom:10px; display:flex; flex-direction:column; gap:3px;
+  }
+  .resource-list .rtitle{color:var(--ink); font-weight:600;}
+  .resource-list .rnote{color:var(--ink-mute); font-size:.88rem;}
+  .tag{
+    display:inline-block; font-family:var(--display); font-size:.62rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--accent); border:1px solid var(--accent-soft);
+    border-radius:20px; padding:2px 9px; margin-bottom:6px; width:max-content;
+  }
+
+  .index-grid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:24px;}
+  .index-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:18px 20px;
+    display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .index-card:hover{border-color:var(--accent-soft); transform:translateX(2px);}
+  .index-card .itxt h3{margin:0 0 4px; font-size:.95rem; letter-spacing:.05em; color:var(--ink); text-transform:none;}
+  .index-card .itxt p{margin:0; font-size:.88rem; color:var(--ink-mute); max-width:46ch;}
+  .index-card .arrow{color:var(--accent); font-family:var(--display); font-size:1.1rem; flex-shrink:0;}
+
+  footer{text-align:center; padding:30px 20px 50px; color:var(--ink-mute); font-size:.82rem; border-top:1px solid var(--line);}
+
+  /* --- Map panel (ported from manchester_map_live.html) --- */
+  #map-panel #map {
+    width: 100%;
+    height: 640px;
+    border: 1px solid #3a1414;
+    box-shadow: 0 0 40px rgba(181,18,27,0.15);
+    border-radius: 6px;
+    background:#0a0a0a;
+  }
+  #map-panel .map-legend-note {
+    margin: 12px 0 6px;
+    font-size: 0.82rem;
+    color: #8a7d72;
+    text-align: center;
+    line-height: 1.5;
+  }
+  #map-panel .key {
+    margin: 0 0 8px;
+    padding: 16px 4px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 32px;
+    border-top: 1px solid #3a1414;
+  }
+  #map-panel .key-item { display: flex; align-items: center; gap: 10px; }
+  #map-panel .key-item img { height: 30px; width: auto; filter: drop-shadow(0 0 3px rgba(181,18,27,0.4)); }
+  #map-panel .key-item span { font-size: 0.8rem; color: #cfc4b8; letter-spacing: 0.3px; }
+  @media (max-width: 600px) { #map-panel #map { height: 480px; } }
+  .marker-icon { filter: drop-shadow(0 0 3px rgba(0,0,0,0.9)) drop-shadow(0 0 6px rgba(181,18,27,0.5)); cursor: pointer; }
+  .iw-title { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; color: #1a1a1a; margin: 0 0 4px; }
+  .iw-faction { font-family: Georgia, 'Times New Roman', serif; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.2px; color: #b5121b; margin: 0 0 8px; }
+  .iw-desc { font-family: Georgia, 'Times New Roman', serif; font-size: 0.88rem; color: #333; line-height: 1.45; max-width: 240px; margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">A Vampire: The Masquerade Chronicle · 5th Edition</div>
+  <h1>Manchester by Night</h1>
+  <p class="sub">Red Brick and Rain — the working guide for everyone at the table, new to Vampire or not.</p>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="index" class="active">Start Here</button>
+  <button data-tab="primer">The Primer</button>
+  <button data-tab="map">The City</button>
+  <button data-tab="resources">Resources</button>
+</nav>
+
+<main>
+
+  <!-- START HERE -->
+  <section class="panel active" data-panel="index">
+    <h2 class="section-title"><span class="num">00</span>Start Here</h2>
+    <p class="lede">Everything you need before session zero, in one place.</p>
+    <p>Read <strong>The Primer</strong> first, whatever your experience with the game. It's short, spoiler-free, and it's what your character would reasonably know walking into this. <strong>The City</strong> is the map — where things are, and who holds them, as far as anyone's told. <strong>Resources</strong> are official, spoiler-free rules references, safe to use any time.</p>
+
+    <div class="index-grid">
+      <div class="index-card" data-goto="primer">
+        <div class="itxt"><h3>The Primer</h3><p>Read this first. The city, the Second Inquisition, what's changed if you've played before.</p></div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="index-card" data-goto="map">
+        <div class="itxt"><h3>The City</h3><p>Interactive map of Manchester — where things are, and who — as far as anyone's told — holds them.</p></div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="index-card" data-goto="resources">
+        <div class="itxt"><h3>Resources</h3><p>Official spoiler-free rules references, safe to use any time.</p></div>
+        <div class="arrow">→</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:28px;">
+      <h4>Content Note</h4>
+      <p>Not a safety-tool prompt — just an honest heads-up about what this chronicle leans into: drug and alcohol use, questionable consent, kidnapping, self-harm, gun violence, human trafficking, torture, and violent death or murder. The kidnapping, self-harm, and trafficking threads in particular run through several Embrace backstories and later chapters — not just as one-off scenes.</p>
+    </div>
+  </section>
+
+  <!-- PRIMER -->
+  <section class="panel" data-panel="primer">
+    <h2 class="section-title"><span class="num">01</span>The Primer</h2>
+    <p class="lede">What you'd reasonably know, or reasonably find out, before building a character. Real city, real stakes. Nothing here spoils your own story — that part's still yours to discover.</p>
+
+    <h3>The City</h3>
+    <p>This is Manchester, present day — not a fictional stand-in, not a generic gothic elsewhere. Red brick, wet pavement, sodium streetlight, trams running late into the night. The kind of city that never quite finished being industrial and never quite became something else instead, which turns out to suit it rather well.</p>
+    <p>Kindred society here divides roughly three ways, and you'll find your own place in that division by playing, not by being told it upfront. Broadly: a <strong>Camarilla</strong> court that runs on rules and rank, an <strong>Anarch</strong> scene built on freedom and mutual protection instead, and a third thing — quieter, older, harder to categorise — that doesn't map neatly onto either. All three are real options. None are obviously correct. Where your character actually ends up is something we'll work out together in play.</p>
+
+    <h3>A City Still Unsettled</h3>
+    <p>About a decade ago, London fell. Nobody young enough to be reading this was there to see it, but everybody's heard something — in six months as Kindred, you'd have picked up at least a fragment of it. The details are murky and mostly secondhand. The fact of it isn't: London's Kindred society came apart, badly, and the wider world of vampire politics still hasn't fully steadied since. Part of what did it — or sped it along — is the Second Inquisition.</p>
+
+    <h3>The Second Inquisition</h3>
+    <p>Forget torches and wooden stakes. This isn't one organisation with a name and a headquarters — it's a loose, uncoordinated shorthand for the fact that the modern world has, in scattered pockets, quietly worked out that vampires are real. Governments. Intelligence services. Private contractors. Tech firms. The odd religious group. Each arrived independently, each acting their own way, usually without knowing the others exist.</p>
+    <p>In practice: surveillance rather than superstition. Financial forensics, data analytics, facial recognition, forensic pathology, patient long-term operations rather than a mob with pitchforks. Most of them don't know what they're actually hunting — they just know something doesn't add up, and they're very good at noticing that. It's not in your face every night. It's real, it's out there, and every Kindred old enough to remember London takes it seriously. You should too.</p>
+    <p class="dim">For most fledgling Kindred this isn't a Session One problem — you're small, new, and nobody's watching you specifically yet. But it shapes the world: why older Kindred are cautious, why Masquerade breaches matter far beyond "other vampires might see," and why things that used to be safe — a scene at a hospital, a body that doesn't add up, a gap in someone's financial records — really aren't anymore.</p>
+
+    <div class="callout gold">
+      <h4>Playing Law Enforcement / Intelligence / Security</h4>
+      <p>Worth thinking about rather than avoiding, and not a reason to rule the concept out — if anything it's one of the richer hooks available. Your character used to sit inside, or close to, exactly the machinery now capable of noticing something's wrong with people like them. Old colleagues, old instincts, old access, all now aimed at a version of the world your character is quietly no longer part of. Go in with eyes open: this is a concept built on proximity to real danger, not a shortcut around it.</p>
+    </div>
+
+    <h3>Old Stories</h3>
+    <p>There are older stories too, the kind nobody quite confirms or denies — something about a god who once walked these streets, centuries back, and who some say is stirring again after a long silence. Nobody agrees on what that means, or that it means anything at all. Worth knowing the rumour exists. Not worth building a character around chasing it down — if it matters, it'll find you.</p>
+
+    <h3>If You've Played Vampire Before</h3>
+    <p>A few things won't match what you remember, whichever edition you last played. The Assamites are now Banu Haqim, the Followers of Set are now Ministry, and the Giovanni — plus several smaller death-focused bloodlines — merged into a single clan called Hecata. None vanished; they're all playable here, just renamed and often reshaped.</p>
+    <p>Clan politics have shifted too. The Tremere Pyramid is gone — the clan's fractured into competing, independent Houses. The Lasombra, historically solid Sabbat, have genuinely split, with a real faction formally joining the Camarilla. The Tzimisce have scattered across Sabbat loyalists, Anarchs, and independents. Brujah and Gangrel don't have one clean sect loyalty — like most clans, they turn up everywhere. The Sabbat itself is badly diminished by the Second Inquisition, no longer the organised sect it once was — but that's not the same as gone. Kindred still lower their voices when they bring it up.</p>
+    <p class="dim">Don't assume any of this maps directly onto Manchester specifically — this city has its own answers, which you'll learn as you go.</p>
+
+    <h3>Before Session Zero</h3>
+    <p>Have a rough idea who your character was before the Embrace — not a finished backstory, just a shape. What did they do? What did they care about? What are they still holding onto, now they're not what they used to be? Everything else — clan, Discipline, the specifics of how you became what you are — gets built together, at the table, on the night.</p>
+  </section>
+
+  <!-- MAP -->
+  <section class="panel" id="map-panel" data-panel="map">
+    <h2 class="section-title"><span class="num">02</span>The City</h2>
+    <p class="lede">Where things are, and who — as far as anyone's told — holds them. Click a marker for details.</p>
+
+    <div id="map"></div>
+    <div class="map-legend-note">Click a marker for details. Scroll or pinch to zoom, drag to pan.</div>
+    <div class="key" id="mapKey"></div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="panel" data-panel="resources">
+    <h2 class="section-title"><span class="num">03</span>Resources</h2>
+    <p class="lede">Official, spoiler-free, and safe to use any time — none of these give away anything about this specific chronicle.</p>
+    <ul class="resource-list">
+      <li>
+        <span class="tag">PDF</span>
+        <span class="rtitle"><a href="https://drive.google.com/file/d/1oikbk75VXUMbputrzg_FDA65mCP0XRfw/view" target="_blank" rel="noopener">V5 Basic Mechanics Quick Reference ↗</a></span>
+        <span class="rnote">Dice pools, Hunger dice, Rouse/Remorse Checks, damage types, Resonance summary.</span>
+      </li>
+      <li>
+        <span class="tag">Web</span>
+        <span class="rtitle"><a href="https://vtm.paradoxwikis.com" target="_blank" rel="noopener">VTM Paradox Wiki — vtm.paradoxwikis.com ↗</a></span>
+        <span class="rnote">Clan Discipline lists, Merits/Flaws, general rules lookup. Good for checking something mid-session without derailing play.</span>
+      </li>
+      <li>
+        <span class="tag">JPG</span>
+        <span class="rtitle"><a href="https://drive.google.com/file/d/1wXs25e7TcYVWVcgvNyZAPYhlyyQBDFMk/view" target="_blank" rel="noopener">Clan Infographic ↗</a></span>
+        <span class="rnote">One-page overview of every clan's title, drives, Bane, Compulsion, and Disciplines — a quick visual lookup rather than a step-by-step walkthrough.</span>
+      </li>
+    </ul>
+    <p class="dim">You don't need to have read anything before session zero — character creation itself walks you through what you need. These are just a head start if you want one.</p>
+  </section>
+
+</main>
+
+<footer>Manchester by Night — Red Brick and Rain. A working guide, updated as the chronicle grows.</footer>
+
+<script>
+/* ---------- Tab switching ---------- */
+(function(){
+  var tabs = document.querySelectorAll('nav.tabs button');
+  var panels = document.querySelectorAll('section.panel');
+  function show(name){
+    tabs.forEach(function(b){ b.classList.toggle('active', b.dataset.tab === name); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel === name); });
+    try{ sessionStorage.setItem('mbn_tab', name); }catch(e){}
+    window.scrollTo({top:0, behavior:'instant'});
+    if(name === 'map' && window.__mbnMap){
+      google.maps.event.trigger(window.__mbnMap, 'resize');
+      window.__mbnMap.fitBounds(window.__mbnBounds, 40);
+    }
+  }
+  window.__mbnShowTab = show;
+  tabs.forEach(function(b){ b.addEventListener('click', function(){ show(b.dataset.tab); }); });
+  document.querySelectorAll('.index-card').forEach(function(c){
+    c.addEventListener('click', function(){ show(c.dataset.goto); });
+  });
+  var start = 'index';
+  try{
+    var h = (location.hash || '').replace('#','');
+    var saved = sessionStorage.getItem('mbn_tab');
+    if(h && document.querySelector('[data-panel="'+h+'"]')) start = h;
+    else if(saved && document.querySelector('[data-panel="'+saved+'"]')) start = saved;
+  }catch(e){}
+  if(start !== 'index') show(start);
+})();
+
+/* ---------- Map (ported from manchester_map_live.html) ---------- */
+/* Player-facing data: anything not yet revealed to the table stays under
+   its cover identity here (e.g. The Vaults of Mamucium = "Unknown Faction"). */
+const locations = [
+  { name: "Abraham Moss Centre", faction: "Anarch", revealed: false, desc: "A sprawling community hub in Crumpsall — pools, classrooms, and civic life carrying on above, while the Movement quietly gathers after dark.", lat: 53.5118, lng: -2.2358, icon: "anarch" },
+  { name: "The Old Pint Pot", faction: "Anarch / Independent", revealed: false, desc: "An unassuming Salford pub on the banks of the Irwell, where cheap pints and old grudges are traded long after the regulars learn not to ask questions.", lat: 53.4835, lng: -2.2580, icon: "anarch" },
+  { name: "Spinningfields", faction: "Camarilla", revealed: true, desc: "Glass towers and corporate polish — the gleaming seat of a fragile new court trying to project old-world authority.", lat: 53.4802, lng: -2.2508, icon: "camarilla" },
+  { name: "The Vaults of Mamucium", faction: "Unknown Faction", revealed: false, desc: "Sealed beneath Castlefield's railway arches, where the ruins of Roman Manchester hide something far older than the city above.", lat: 53.4745, lng: -2.2530, icon: "mithras" },
+  { name: "Merchants' Quay", faction: "Camarilla", revealed: false, desc: "A converted Victorian warehouse turned exclusive lounge in Castlefield Basin — fine dining above, private rooms below for more particular appetites.", lat: 53.4735, lng: -2.2555, icon: "camarilla" },
+  { name: "MMU — All Saints Campus", faction: "Neutral / Shared Ground", revealed: true, desc: "A busy university campus on the Oxford Road corridor — one of the few patches of ground no single faction has ever managed to claim.", lat: 53.4704, lng: -2.2407, icon: "generic" },
+  { name: "FAC251 — Factory Manchester", faction: "Neutral (Camarilla / Anarch)", revealed: true, desc: "One of the city's best-known nightclubs — a crowded, oblivious hunting ground everyone watches but no one officially owns.", lat: 53.4739, lng: -2.2412, icon: "generic" },
+  { name: "Storage World Manchester Central", faction: "Camarilla / Anarch / Autarkis", revealed: false, desc: "An unremarkable self-storage facility east of the centre, quietly holding decades of Kindred secrets behind ordinary roller doors.", lat: 53.4838, lng: -2.2168, icon: "generic" },
+  { name: "Crabtree Warehouse", faction: "", revealed: false, desc: "A disused warehouse in the light-industrial stretch near the Ashton Canal — empty, quiet, and occasionally not as unclaimed as it looks.", lat: 53.4790, lng: -2.1950, icon: "scene" },
+  { name: "The Hallworth Gallery", faction: "", revealed: false, desc: "A small, exclusive gallery on King Street, showing expensive art to people who mostly just want something to hang in the office.", lat: 53.4809, lng: -2.2450, icon: "scene" },
+  { name: "The Aces", faction: "", revealed: false, desc: "A speedway-era pub out toward Gorton, all leather and engine oil, where the regulars don't take kindly to strangers.", lat: 53.4720, lng: -2.1730, icon: "scene" },
+  { name: "Port Salford", faction: "", revealed: true, desc: "A working freight terminal on the Ship Canal — containers, cranes, and cargo moving long after the offices nearby have gone dark.", lat: 53.4720, lng: -2.3550, icon: "scene" },
+  { name: "Manchester Christmas Markets", faction: "", revealed: true, desc: "Stalls, lights, and crowds fill Albert Square every winter — easy to lose someone in, easier still to lose someone properly.", lat: 53.4796, lng: -2.2445, icon: "scene" },
+  { name: "Guardian Telephone Exchange", faction: "", revealed: false, desc: "A sealed Cold War relic beneath Chinatown — officially disused, though the tunnels still don't stay quiet.", lat: 53.4777, lng: -2.2411, icon: "scene" },
+  { name: "\"Hidden\" Nightclub", faction: "", revealed: true, desc: "A nightclub literally called Hidden, in a converted Cheetham Hill textile mill — multi-room nights running long after the rest of the city's gone to sleep.", lat: 53.4885, lng: -2.2400, icon: "scene" },
+  { name: "Chetham's Library", faction: "", revealed: true, desc: "Manchester's oldest library, tied to real history — and, after hours, to something else entirely.", lat: 53.4866, lng: -2.2438, icon: "scene" },
+  { name: "Old Trafford", faction: "", revealed: true, desc: "One of the world's great football stadiums — on derby nights, the whole city seems to gather around it.", lat: 53.4631, lng: -2.2914, icon: "scene" },
+  { name: "Salford City Stadium", faction: "", revealed: true, desc: "Salford City's home ground in Kersal — smaller and quieter than Old Trafford, but no less charged on the right night.", lat: 53.5136, lng: -2.2767, icon: "scene" },
+  { name: "Paragon Point", faction: "", revealed: true, desc: "A converted Victorian mill on Great Ancoats Street, now anonymous multi-tenant offices — ordinary enough that nobody thinks twice about who's coming and going.", lat: 53.4841, lng: -2.2250, icon: "scene" },
+  { name: "Alexandra Park", faction: "", revealed: false, desc: "A green space in Moss Side with a reputation for drugs and opportunistic crime after dark.", lat: 53.4499, lng: -2.2427, icon: "scene" }
+];
+
+const mapStyle = [
+    { "featureType": "administrative", "elementType": "labels", "stylers": [ { "visibility": "simplified" }, { "color": "#d20808" } ] },
+    { "featureType": "landscape", "elementType": "all", "stylers": [ { "visibility": "on" }, { "gamma": "0.50" }, { "hue": "#ff2200" }, { "lightness": "-79" }, { "saturation": "-86" } ] },
+    { "featureType": "landscape.man_made", "elementType": "all", "stylers": [ { "hue": "#ff0000" } ] },
+    { "featureType": "landscape.natural.landcover", "elementType": "all", "stylers": [ { "visibility": "on" }, { "color": "#251f1f" } ] },
+    { "featureType": "poi", "elementType": "all", "stylers": [ { "color": "#e74231" }, { "visibility": "off" } ] },
+    { "featureType": "poi", "elementType": "labels.text.stroke", "stylers": [ { "color": "#20221f" }, { "visibility": "off" } ] },
+    { "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "color": "#d20808" }, { "visibility": "off" } ] },
+    { "featureType": "poi.park", "elementType": "all", "stylers": [ { "color": "#151717" } ] },
+    { "featureType": "road", "elementType": "all", "stylers": [ { "color": "#1b1b1b" } ] },
+    { "featureType": "road", "elementType": "labels.text.fill", "stylers": [ { "color": "#8a8a8a" } ] },
+    { "featureType": "transit", "elementType": "all", "stylers": [ { "color": "#1e1f20" }, { "visibility": "off" } ] },
+    { "featureType": "transit", "elementType": "labels.text", "stylers": [ { "hue": "#ff0000" } ] },
+    { "featureType": "transit", "elementType": "labels.text.fill", "stylers": [ { "visibility": "simplified" }, { "hue": "#ff0000" } ] },
+    { "featureType": "water", "elementType": "all", "stylers": [ { "color": "#070808" } ] }
+];
+
+const icons = {
+  generic: { url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAoCAYAAAD+MdrbAAACw0lEQVR4nK2WO2tUURDH/7PZJGZJTDCGVJEURrFQIcRCRLBJY2NnmuBnUGsRRRBEULCwECwFEVHwC1jYGFQwheILoqBBiRGToJvHbn4Wd87ucffu3s1jYDlz5vG/s2ce55hSCDAzw/l2SUOScpK+mVnR5TkzW0/zrwPztQBcBKaBBWAJeAfcBAYDaCYYkAP6gSka0wywLxM0KIHH7rgC3ALGgRPAZeC366aBTg/A0sDafD3qDiVgMsXuOLDoNpMuy6cB5n29AqwDj3zfAeT91+mya25zPw5GSjJXwfR1WJJJeuBHgJmVzKwkqeyyh24z7D6VbMehWo3ys5fFOlCQ1GVm8x7RbI1PhdIy9N6j7fKsd0m64RH3uk2H23zwfVsdSpSUUT/wS74/GZXLef/IhO9Pu01qUnIR6EvguyekHXgLFIEB108BcyTFX/FLJc/mEY/grsueAQvOn3PdRCoY1VYbis5IwCkv7NvAa+AXcB0oA2dr/tlIwLJQGpKeSur2BCxJWpA0LulC8FWS1TuS7knqldQp6YykQ5IOSFoOXxmIDn4NmAf+evESrYGW3aYYyUbjv90NXCVpu16SHu0BDgFPIqdXwDGgL7I5SNJdexompuaMu4BZkt4eybKv1E+UrXhotplZEZiRVDCzj26Hqq1qShqkHIZyo8hC9vu9JsvAYZc1nIHNJm7Q7Zc06PuxLL9mgCH8eUkl53/U6DYEGOiPpFXnF7OMW4lwTVLZ+ZWtAMbARPymAcPwzKs679q3AhiooGSgSlLPdgD2qRpZv6/112YLgMFpVyTbnfX1VgB3RrK+rQAG2tGA3zTghqgVwGIDfsOAcS8HmtsOwFlVh8OXGt2mAL9K+un8pyzApkT1vfic5BXb4fuGhV3/hPifckquhDdKroNVMt7WWYCBXqg6C8NHNk7RvbIXGHN+22u3Kf0DPAS5FxB01JQAAAAASUVORK5CYII=", width: 20, height: 40 },
+  camarilla: { url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAoCAYAAADzL6qcAAAC50lEQVR4nJ2Wz29UVRTHv+d1KNNSbLH0F6CLagAXBA0LmkhjwoLY1D9AEpGtC7euZEfca1SIRkzYGOK/oAkbFyZNCAluABslqbsCtiitlc7Hxfme6fXNmzDTk9zcM+d8z/eee+65942UCTDg+VXgc+BXYMPjvm2v5NgOyUguAKt0l1XgvVqyjOR8JWgLuOuxVfG9+z8yoAACOASsA88MvAYcAxoex4Fv7XsGrAEzji0ENEz4Sbbap7X7L3GfZbjLtjVkxgBuAy0XeA8wkNcg/QYGgWVjb6X4IiKQdEDSEUkh6UZE/CspImLbWy8iYtu2LUk3jH1J0lhEUHjBIUlN60tAlEkQEdGKiFZuk7RkbNOxSkR/Sdqw/thZFhEB8AZwKrdJ+tPYDceq4VXXgGVJByWNZauPS7pu3FuSHts3aqLliFgHopCUCvqj5zmvKklfSzoh6TVJ36gsEpLm7P/B84CgrJN7Zhv4DWi6yGdt2wbO2TYE/G7bUccW7aP1/JX742P/ngaeAv8Ah2y7ZMzVPDYRFR7jlJcTYNG+v4FN98uiffeMLeqyCc9HgF8c8AXwxGRXbLsDHK7EtO/b68BNYAGYBeaBnx3Y8sC2M8YsOOZkIrkIPKJTNtm5wFjfrME9BN5vSFqR9EDlNXnqZitUXoEp7ciApFVJSGpJGpM07NiVlNUM8KVTHgZGKI/5w2zlD2wbMWbWdZtun5gqkhXxzYzodBWXn3o7kPKJSI9cw/P3GdF3FV/hmOi2QN4S72REb3c0YCYd26rISqb/kdbZDVEz0/d6rt3K84gaXfS+iQZrMtoV0VAXvWeiVId9mW244usro5FM37+bjJKMdtH7JjrQRe+baLyL3jNR6t6JzDZRB+yVaDKzpbep1TNR9onOiSbxJ7wnouxZeKFKJLdA3dNRl1ECTak8qbTNF7Wzvb6IXk5JqqxL+hvTN9Ep+/EobKslqnsaUqEHJX0k6Sfb5yU17et43P4D0VNvvcyOZGUAAAAASUVORK5CYII=", width: 18, height: 40 },
+  anarch: { url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAoCAYAAAAR87HlAAADIklEQVR4nK2WzWudRRTGn3M/SEMwsamExoiIFOmi7arxAxTajSL4gURxbRb9GwQt7VIpqG0XbgRBsxFcKpS0C3GjIFlIiy3qUmkNVlJDksabvL8u7jPcuZN7r73lHniZmTPPPHPmOfPxSjagltUXgRvAGnAXaAErwDng6RLf0xIAmAO+ZbC1gNPG1/sS+psGrmeD/wS+Bz4GXgTeAj4ENty/2Jc4OYEvDb4NnAKm+wTxJrBr3BwQPaUAnjPhOnCiWEXdXwMYs/+M8UuDor1g0Fm3x4DogQtP1AR+95j5kjiFfdjlipeyGxGUpPbVIqIl6bLdL6TuknTc5XREVGVkvSKWtOHmbtmfBuy4nMmXHRFERNVLCklTkpD0Tz/S3wx4wksMR3QIeD0iyCKujHnKuFtpAeVyXrHofwD7ne0AFoC/gQm3m8YfAO4AW8CsfbWcMGXzqom/yvresO+DPLvAF/Z/5nb3lso2/zywafBFR/M8UAHXjDkKLBvzCzBpf3OP7hnxAp1juAr87PpfwBKw7fbnwBTwJPBMxtPoIs+Ij5kgWZXVdyzFI8As8Cxwyb6pnCzymbL6UeCngrSXrbu8CbwPHGnkJycidtJEEXEV+FXScW+582pv+H2SHpK0rfZefUftwxOS3pY0HsCnkl5W+wD8K6mSNOF996gHLkfES0UeXpP0qie8Iul6RGxJUkPSSc/aknRQUtOE05LSVtm2NHVPiqRrkn6MiNVCylqXju6oOYsz1hTg6zyZBb7uMZ0LJdfRulZqH8VVSTeMS5dHntSw9rsRUeW5abgDn+80qA6gzkXTKiPsdTXmkebZx+1U7vQbOMgGP7MduztK0tS/OQrSJEl6ETb64IYiTdZ0WQ1EDUma7M4oScdc3h4FadJ00uVINC0TtVb4hyfNDkQi7fVE97VG6ciOamRkU3veoGFIsygB/nN903fDfZF2LT/dPMBjwIQ62V8HHvdE/xtxqWk40hlJ70p62P73JM37Wrzfvd0VbXpVP8oetx/sG54wDbQEc7R/awCO5xM+KHGK9hvgu2EJ92Q/Iw5Jn8ivwzBB3QN6P3bQDykPagAAAABJRU5ErkJggg==", width: 21, height: 40 },
+  scene: { url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAAA8ElEQVRIib2WMU7DQBBF3yIuQEqEKCihoo4Rl4Er5HR0MTUF0EZQ5RTwKDDCCrHYGdv5kqUp/Pd5xuMZQ1BqUUvUdxQ1AFfAZdR0nAA1gMBrxJTJ6Ka7QhqT0XxSz/zVecQbLd1tL27mBDUD8bRSX3qle54LcqJ+9ECf6qLWX1W67sD7nfsLcFcL2ztK1FNgyfd7WALX/zzUBngEWuChlLLZC1Iveoc2JEbMjrYd9Af+lJkMKR2sdFVSF+rKv1pFOq8WNqq9o7D0BxtthvVAPDmoHYin1Zg1kYG9q29RX2bDtiQ2bAa0PhQolVFY2R/IL/OxxLkEkAx+AAAAAElFTkSuQmCC", width: 26, height: 26 },
+  mithras: { url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAoCAYAAAAR87HlAAAABmJLR0QA/wD/AP+gvaeTAAACGklEQVRIie2WvWtUQRTFz2RXgxgDohZLgpAIkf0DNH+EhWWKkDaFooWFVn70gh9R9A8QRUi1BOyEpFGMNopR/CCagBBbN5uwEv1Z7H04zs7kvbdiox5YZu+dcw9nZu4MTyoIYKgoV8AkUM3hOGAB6MvhVYFJAa+Bp0A9QZwCZulgFphK8OqmsyTguhVsAmdCN0ANaBqnCdSC+T6r2zTOVQH7gVV+YgEYDQpPA0vAqSA/avwMK8C+bPIw8M6bbALTgLP5CrAXqHh7PO2tAOAtMBbuySAwA3wNXM8BGxa3gAYw73HawDVgz3YnOAxcBF6RxnfbjgvAcFIsEK4AL7cRBXhOTouFoset8CPwOBB7ROdAAI6VEb1tgrstvmIily0eoNMxN2P1Kftjktaccy2L3/ujc25d0prxupC6nlVJ48CMpDeSzlv+Ep22qks6Imk+Ud8N4H7ixEPcjdWnlv8skrsVyS2WcToCfPMcfQZ22ZhhCzhY2Klz7oOke17qoaSajRnuOOdWCzs1twesrWJYJns4ygI4RPfNegGM9CToCfcDJ4EHwAlg528J9grnORqU9CnC6devl2RLUjvCG3LOfVFAdpIGChjZYb+kQV+0LelGhDwu6agXL0p6EuHF3McBnAtO/2xeTZFHdiMn7km0lRP3JPpHnP7jy1+R1LD/DUnlnrsUgAnr0Yki/OIfAyXwX7QQ1iUt2/gX4QcVlb2+/U8/XwAAAABJRU5ErkJggg==", width: 21, height: 40 },
+};
+
+const keyItems = [
+  { icon: "camarilla", label: "Camarilla" },
+  { icon: "anarch", label: "Anarch" },
+  { icon: "mithras", label: "Unknown Faction" },
+  { icon: "generic", label: "Unclaimed / Shared Ground" },
+  { icon: "scene", label: "Location of Interest" },
+];
+
+function buildKey() {
+  const container = document.getElementById("mapKey");
+  keyItems.forEach(item => {
+    const wrap = document.createElement("div");
+    wrap.className = "key-item";
+    const img = document.createElement("img");
+    img.src = icons[item.icon].url;
+    const span = document.createElement("span");
+    span.textContent = item.label;
+    wrap.appendChild(img);
+    wrap.appendChild(span);
+    container.appendChild(wrap);
+  });
+}
+buildKey();
+
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    styles: mapStyle,
+    disableDefaultUI: false,
+    streetViewControl: false,
+    mapTypeControl: false
+  });
+
+  const bounds = new google.maps.LatLngBounds();
+  const infoWindow = new google.maps.InfoWindow();
+
+  locations.forEach(loc => {
+    if (loc.revealed === false) return; // not shown until flipped to true
+
+    const iconData = icons[loc.icon];
+
+    const marker = new google.maps.Marker({
+      map: map,
+      position: { lat: loc.lat, lng: loc.lng },
+      title: loc.name,
+      icon: {
+        url: iconData.url,
+        scaledSize: new google.maps.Size(iconData.width, iconData.height),
+        size: new google.maps.Size(iconData.width, iconData.height),
+        anchor: new google.maps.Point(iconData.width / 2, iconData.height)
+      }
+    });
+
+    bounds.extend(marker.getPosition());
+
+    marker.addListener("click", () => {
+      const factionLine = loc.faction
+        ? `<p class="iw-faction">${loc.faction}</p>`
+        : "";
+      const swatchSize = loc.icon === "scene" ? 32 : 68;
+      const iconSwatch = `<div style="display:inline-flex;align-items:center;justify-content:center;background:#1a0808;border:1px solid #b5121b;border-radius:6px;padding:6px;width:${swatchSize}px;height:${swatchSize}px;box-sizing:border-box;flex-shrink:0;">
+        <img src="${iconData.url}" style="max-width:100%;max-height:100%;" />
+      </div>`;
+      infoWindow.setContent(
+        `<div style="display:flex;gap:10px;align-items:flex-start;max-width:260px;">
+           ${iconSwatch}
+           <div>
+             <p class="iw-title">${loc.name}</p>
+             ${factionLine}
+             <p class="iw-desc">${loc.desc}</p>
+           </div>
+         </div>`
+      );
+      infoWindow.open(map, marker);
+    });
+  });
+
+  map.fitBounds(bounds, 40);
+  window.__mbnMap = map;
+  window.__mbnBounds = bounds;
+
+  google.maps.event.addListenerOnce(map, "idle", () => {
+    if (map.getZoom() > 15) map.setZoom(15);
+  });
+}
+
+window.initMap = initMap;
+</script>
+
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQ_-dkBdVIVg98eJocbJ_VVlRPEoatK0&callback=initMap&v=weekly&loading=async">
+</script>
+
+</body>
+</html>
 
