@@ -652,7 +652,8 @@
   var closeBtn = document.getElementById('docModalClose');
   if(!overlay || !frame || !closeBtn) return;
   function openDoc(src){
-    frame.src = src;
+    var sep = src.indexOf('?') === -1 ? '?' : '&';
+    frame.src = src + sep + 't=' + Date.now();
     overlay.classList.add('active');
     document.documentElement.classList.add('modal-open');
     document.body.classList.add('modal-open');
