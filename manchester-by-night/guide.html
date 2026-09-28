@@ -182,6 +182,25 @@
     border-radius:20px; padding:2px 9px; margin-bottom:6px; width:max-content;
   }
 
+  .resource-list li.found-doc{ cursor:pointer; transition:border-color .15s ease; }
+  .resource-list li.found-doc:hover, .resource-list li.found-doc:focus-visible{ border-color:var(--accent); outline:none; }
+
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(8,6,5,0.82); z-index:999;
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .modal-box{ position:relative; width:100%; max-width:560px; }
+  .modal-box iframe{
+    display:block; width:100%; height:min(80vh, 640px); border:0; border-radius:4px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.7); background:#0f0f0e;
+  }
+  .modal-close{
+    position:absolute; top:-38px; right:0; background:none; border:none;
+    color:var(--ink); font-size:1.8rem; line-height:1; cursor:pointer; padding:4px 8px;
+  }
+  .modal-close:hover{ color:var(--accent); }
+
   .index-grid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:22px;}
   .index-card{
     background:var(--panel); border:1px solid var(--line); border-radius:2px; padding:18px 20px;
@@ -354,6 +373,7 @@
       <button data-tab="primer">The Primer</button>
       <button data-tab="map">The City</button>
       <button data-tab="resources">Resources</button>
+      <button data-tab="afterdark">After Dark</button>
     </nav>
 
     <div class="content">
@@ -455,6 +475,126 @@
     <p class="dim">You don't need to have read anything before session zero — character creation itself walks you through what you need. These are just a head start if you want one.</p>
   </section>
 
+  <!-- AFTER DARK -->
+  <section class="panel" data-panel="afterdark">
+    <h2 class="section-title"><span class="num">04</span>After Dark</h2>
+    <p class="lede">Night Bulletins — whatever's making the rounds, verified or not. None of it is required reading, and none of it substitutes for actually playing to find out.</p>
+
+    <h3>Sect</h3>
+    <ul class="resource-list">
+      <li class="found-doc" data-doc="story_sect_camarilla.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Camarilla</span>
+        <span class="rnote">Rules, a court, someone in charge — or someone who says he is. Structure, if that's what you're after, and a hand to hold if you don't fancy finding out what's out there in the dark on your own.</span>
+      </li>
+      <li class="found-doc" data-doc="story_sect_anarch.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Anarch</span>
+        <span class="rnote">No prince, no permission, no one to blame but yourself. The Night Forum runs on who shows up and who's still standing after. Freedom's the pitch. Nobody mentions what it costs until you're already paying it.</span>
+      </li>
+    </ul>
+
+    <h3>Clan</h3>
+    <ul class="resource-list">
+      <li class="found-doc" data-doc="story_clan_banuhaqim.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Banu Haqim</span>
+        <span class="rnote">Judgment runs in the blood. So, lately, does a body count nobody's officially investigating.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_toreador.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Toreador</span>
+        <span class="rnote">Beauty first, consequences later. Ask Mark Floros how that's working out for the court's reputation.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_malkavian.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Malkavian</span>
+        <span class="rnote">Frida sees patterns everywhere. The unsettling part is how often she's right.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_nosferatu.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Nosferatu</span>
+        <span class="rnote">The sewers have an owner. You just haven't met him yet.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_ventrue.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Ventrue</span>
+        <span class="rnote">Old money, older manners, and a Prince who thinks a title is the same thing as power.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_tremere.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Tremere</span>
+        <span class="rnote">No more Pyramid. Three Houses now, all of them still certain they're the real one.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_brujah.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Brujah</span>
+        <span class="rnote">Every Anarch fire needs someone willing to actually strike the match.</span>
+      </li>
+      <li class="found-doc" data-doc="story_clan_gangrel.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">Gangrel</span>
+        <span class="rnote">Doesn't keep an address. Keeps a route.</span>
+      </li>
+    </ul>
+    <p><strong>Caitiff</strong> — No clan, no sire's name to hide behind, no one obliged to explain the rules to you. Learn fast.</p>
+    <p class="dim"><strong>Thin-Blooded</strong> — Daylight, a heartbeat, a body that mostly still works. Every other clan has opinions about that, most of them unkind.</p>
+
+    <h3>Predator Type</h3>
+    <p>Nobody's chosen how they feed yet — that gets decided by what you actually do, the first time it's your only option. Manchester keeps its own gossip about it anyway: the ones who never miss a night at the same three bars, the ones who work the taxi ranks after 2am, the ones nobody's seen feed at all and everyone has a theory about. Whatever you end up being, someone in this city noticed before you did.</p>
+    <ul class="resource-list">
+      <li class="found-doc" data-doc="story_predator_sandman.html" tabindex="0" role="button">
+        <span class="tag">Overheard</span>
+        <span class="rtitle">Marilyn Haig</span>
+        <span class="rnote">Never a struggle, never a mark left behind — whoever she's feeding on, they wake up remembering it as an unusually good night's sleep.</span>
+      </li>
+      <li class="found-doc" data-doc="story_predator_extortionist.html" tabindex="0" role="button">
+        <span class="tag">Overheard</span>
+        <span class="rtitle">Kieran Cotterill</span>
+        <span class="rnote">Somebody at the court archive has a very patient arrangement with somebody outside it. Nobody involved calls it what it is.</span>
+      </li>
+      <li class="found-doc" data-doc="story_predator_scenequeen.html" tabindex="0" role="button">
+        <span class="tag">Overheard</span>
+        <span class="rtitle">Mark Floros</span>
+        <span class="rnote">Everyone who leaves his private room upstairs remembers it as the best night of their year. None of them remember much else about it.</span>
+      </li>
+      <li class="found-doc" data-doc="story_predator_osiris.html" tabindex="0" role="button">
+        <span class="tag">Overheard</span>
+        <span class="rtitle">Robert Vasile</span>
+        <span class="rnote">He's picky about who he feeds on, and the pattern's noticeable if you're looking for it. He's noticed it too. Doesn't seem bothered.</span>
+      </li>
+    </ul>
+
+    <h3>Rumours and Loose Threads</h3>
+    <ul class="resource-list">
+      <li class="found-doc" data-doc="story_rumour_mateo.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">The Diplomat</span>
+        <span class="rnote">Mateo Serrano smiles at every newcomer to the Tower. Ask around long enough and you'll notice nobody smiles back the same way.</span>
+      </li>
+      <li class="found-doc" data-doc="story_rumour_castlefield.html" tabindex="0" role="button">
+        <span class="tag">Read the Story</span>
+        <span class="rtitle">The Preacher at Castlefield</span>
+        <span class="rnote">Something meets under the old ruins near Deansgate-Castlefield after dark. Calls it worship. Calls someone "Father." Neither sect's said a word against it, which either means it's nothing, or means everyone's already decided it's not worth the trouble of asking.</span>
+      </li>
+      <li class="found-doc" data-doc="kieran_archive_card.html" tabindex="0" role="button">
+        <span class="tag">Found Document</span>
+        <span class="rtitle">K.C.'s Personal Files</span>
+        <span class="rnote">Somebody in the court archive keeps the cases Cleo doesn't want raised in front of Miers. Somebody else clearly wants them read.</span>
+      </li>
+      <li class="found-doc" data-doc="sidney_abel_texts.html" tabindex="0" role="button">
+        <span class="tag">Found Document</span>
+        <span class="rtitle">Same Time Thursday</span>
+        <span class="rnote">A courier's texts, apparently, going back further than one delivery. Whoever leaked these either trusts Sidney Abel or is trying to burn her.</span>
+      </li>
+      <li class="found-doc" data-doc="frida_boucher_report.html" tabindex="0" role="button">
+        <span class="tag">Found Document</span>
+        <span class="rtitle">Three Cameras, Never Four</span>
+        <span class="rnote">Frida Boucher's own margin notes on a feeding gone wrong — the kind of detail a Sheriff's investigator writes down only when she can't stop noticing it.</span>
+      </li>
+    </ul>
+  </section>
+
 </main>
 
       <footer class="site-footer">
@@ -463,6 +603,13 @@
       </footer>
 
     </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="docModal">
+  <div class="modal-box">
+    <button class="modal-close" id="docModalClose" aria-label="Close">&times;</button>
+    <iframe id="docModalFrame" title="Found document" src=""></iframe>
   </div>
 </div>
 
@@ -495,6 +642,31 @@
     else if(saved && document.querySelector('[data-panel="'+saved+'"]')) start = saved;
   }catch(e){}
   if(start !== 'index') show(start);
+})();
+
+/* ---------- Found-document modal ---------- */
+(function(){
+  var overlay = document.getElementById('docModal');
+  var frame = document.getElementById('docModalFrame');
+  var closeBtn = document.getElementById('docModalClose');
+  if(!overlay || !frame || !closeBtn) return;
+  function openDoc(src){
+    frame.src = src;
+    overlay.classList.add('active');
+  }
+  function closeDoc(){
+    overlay.classList.remove('active');
+    frame.src = '';
+  }
+  document.querySelectorAll('.found-doc').forEach(function(el){
+    el.addEventListener('click', function(){ openDoc(el.dataset.doc); });
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openDoc(el.dataset.doc); }
+    });
+  });
+  closeBtn.addEventListener('click', closeDoc);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeDoc(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeDoc(); });
 })();
 
 /* ---------- Map (ported from manchester_map_live.html) ---------- */
