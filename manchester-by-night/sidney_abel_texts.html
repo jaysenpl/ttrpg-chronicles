@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Found Document — Text Thread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bezel: #4a4a48;
+  --bezel-edge: #38383a;
+  --screen: #eeeae1;
+  --sent: #6b7c5a;
+  --sent-text: #f3f1e6;
+  --recv: #dcd6c8;
+  --recv-text: #2b2a27;
+  --muted: #8a8578;
+}
+*{box-sizing:border-box;}
+html,body{
+  margin:0;
+  padding:0;
+  background:#0f0f0e;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'IBM Plex Sans', sans-serif;
+}
+body{ padding:24px 16px; }
+.screen{
+  position:relative;
+  width:100%;
+  max-width:400px;
+  background: var(--screen);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+}
+.header{
+  text-align:center;
+  padding:16px 0 12px;
+  border-bottom: 1px solid rgba(43,42,39,0.12);
+  margin:0 16px;
+}
+.header .name{
+  font-size:0.9rem;
+  font-weight:600;
+  color:#2b2a27;
+}
+.header .sub{
+  font-size:0.68rem;
+  color: var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.thread{
+  padding:16px 14px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.row{ display:flex; }
+.row.sent{ justify-content:flex-end; }
+.row.recv{ justify-content:flex-start; }
+.bubble{
+  max-width:78%;
+  padding:8px 13px;
+  border-radius:16px;
+  font-size:0.85rem;
+  line-height:1.4;
+}
+.sent .bubble{
+  background: var(--sent);
+  color: var(--sent-text);
+  border-bottom-right-radius:4px;
+}
+.recv .bubble{
+  background: var(--recv);
+  color: var(--recv-text);
+  border-bottom-left-radius:4px;
+}
+.timestamp{
+  text-align:center;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:0.62rem;
+  color: var(--muted);
+  letter-spacing:0.04em;
+  margin:4px 0 2px;
+}
+</style>
+</head>
+<body>
+<div class="screen">
+    <div class="header">
+      <div class="name">Unknown (Client)</div>
+      <div class="sub">saved as: client — do not label</div>
+    </div>
+    <div class="thread">
+      <div class="row recv"><div class="bubble">you're early. i like early.</div></div>
+      <div class="row sent"><div class="bubble">always early. running's my whole thing lol. parked round back, gave me a right look though</div></div>
+      <div class="row recv"><div class="bubble">ignore him, he glares at everyone. package is under the passenger seat, don't open it</div></div>
+      <div class="row sent"><div class="bubble">wasn't gonna!! not my business what's in it, just the getting it there part</div></div>
+      <div class="row recv"><div class="bubble">you say that every time</div></div>
+      <div class="row sent"><div class="bubble">because it's true every time</div></div>
+      <div class="row recv"><div class="bubble">you're good at this. you know that right. could do bigger jobs if you wanted</div></div>
+      <div class="row sent"><div class="bubble">i'm good at THIS job. this exact size of job. don't need it getting complicated</div></div>
+      <div class="row recv"><div class="bubble">wasn't trying to complicate anything</div></div>
+      <div class="row sent"><div class="bubble">i know. wasn't having a go. just — this works. i like that it works. don't want to mess with what works</div></div>
+      <div class="row recv"><div class="bubble">fair enough. same time thursday?</div></div>
+      <div class="row sent"><div class="bubble">same time thursday. storage world, usual unit, i'll text when i'm 10 out</div></div>
+      <div class="row recv"><div class="bubble">you're a lifesaver Sid</div></div>
+      <div class="row sent"><div class="bubble">🤙 just doing the driving mate, don't go making it a whole thing</div></div>
+    </div>
+    <div class="timestamp">delivered</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Found Document — Archive Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Reenie+Beanie&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --card: #d9c9a3;
+  --card-edge: #c4b287;
+  --ink: #2b2a2f;
+  --stamp: #7c2626;
+  --pin: #8a7a4a;
+  --hand: #26314a;
+}
+*{box-sizing:border-box;}
+html,body{
+  margin:0;
+  padding:0;
+  background:#14110f;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'EB Garamond', serif;
+}
+body{ padding:48px 16px; }
+.desk{ position:relative; width:100%; max-width:520px; }
+.tab{
+  width:140px;
+  height:22px;
+  margin-left:40px;
+  background: linear-gradient(180deg, var(--card), var(--card-edge));
+  border-radius:6px 6px 0 0;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.2) inset;
+}
+.card{
+  position:relative;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(120,95,45,0.12), transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(90,60,20,0.12), transparent 45%),
+    linear-gradient(180deg, var(--card), var(--card-edge));
+  padding:38px 34px 30px;
+  box-shadow: 0 24px 50px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.15) inset;
+  border-radius: 2px;
+}
+.pin{
+  position:absolute;
+  top:16px; left:50%;
+  width:16px; height:16px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background: radial-gradient(circle at 35% 30%, #b8a25a, var(--pin) 60%, #5c4e26 100%);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+}
+.header{
+  font-family:'Special Elite', monospace;
+  font-size:0.78rem;
+  letter-spacing:0.06em;
+  color: var(--ink);
+  text-transform:uppercase;
+  border-bottom: 1px dashed rgba(43,42,47,0.4);
+  padding-bottom:10px;
+  margin-bottom:16px;
+  display:flex;
+  justify-content:space-between;
+}
+.stamp{
+  display:inline-block;
+  font-family:'Special Elite', monospace;
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+  color: var(--stamp);
+  border: 2px solid var(--stamp);
+  padding:2px 8px;
+  border-radius:3px;
+  transform: rotate(-6deg);
+  opacity:0.85;
+}
+.redact{
+  display:inline-block;
+  background: var(--ink);
+  color: transparent;
+  padding:0 6px;
+  border-radius:1px;
+  user-select:none;
+}
+.body{
+  font-family:'Special Elite', monospace;
+  font-size:0.92rem;
+  line-height:1.75;
+  color: var(--ink);
+}
+.body p{ margin:0 0 1em; }
+.margin-note{
+  margin-top:22px;
+  padding-top:16px;
+  border-top: 1px dashed rgba(43,42,47,0.35);
+  font-family:'Reenie Beanie', cursive;
+  font-size:1.55rem;
+  line-height:1.35;
+  color: var(--hand);
+  transform: rotate(-1deg);
+}
+.sig{
+  margin-top:10px;
+  text-align:right;
+  font-family:'Reenie Beanie', cursive;
+  font-size:1.7rem;
+  color: var(--hand);
+  transform: rotate(-2deg);
+}
+</style>
+</head>
+<body>
+<div class="desk">
+  <div class="tab"></div>
+  <div class="card">
+    <div class="pin"></div>
+    <div class="header">
+      <span>Archive card — K.C. personal files</span>
+      <span class="stamp">not court property</span>
+    </div>
+    <div class="body">
+      <p><em>Case ref: 1987/B, Manchester</em></p>
+      <p>Blood Bond claim, disputed. Neonate (name <span class="redact">redacted</span>, per own request, still living) alleged forced Bonding by sire as grounds for release from Sire obligations under old Barony custom. Precedent sought: none found locally — referred to a Liverpool ruling, 1962, itself referring to something older nobody could actually produce a copy of.</p>
+      <p>Ruled, eventually: Bonding alone insufficient grounds; <em>intent</em> to Bond as coercion is the actual test, and near-impossible to prove after the fact unless witnessed. Neonate's petition denied. Neonate left the city within the year. Sire remained. Draw your own conclusions about how "fair" that particular precedent really was.</p>
+    </div>
+    <div class="margin-note">
+      Filed here rather than the main court archive because Cleo asked me not to keep bringing this one up in front of Miers. Apparently it "sets a bad tone." I disagree, obviously, or I wouldn't still have the card.
+      <br><br>
+      Note to self: chase down whether the Liverpool ruling actually exists anywhere, or whether it's just something everyone's been citing to each other for sixty years because nobody wants to be the one who says it might not.
+    </div>
+    <div class="sig">— K.C.</div>
+  </div>
+</div>
+</body>
+</html>
