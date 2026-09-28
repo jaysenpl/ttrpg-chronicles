@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Anarch — Manchester by Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0a09; --panel:#1c1512; --line:#5c2318;
+    --ink:#e9e0cd; --ink-dim:#c9bfa9; --ink-mute:#8a7d72;
+    --accent:#8c3b28; --gold:#c98a3e;
+    --serif:'Barlow Condensed',Georgia,'Times New Roman',serif;
+    --display:'Cinzel',Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0; background:var(--bg); overflow-x:hidden;}
+  body{
+    font-family:var(--serif); font-size:1.08rem; line-height:1.6; color:var(--ink-dim);
+    padding:0 0 28px;
+  }
+  .story-image{
+    width:100%; height:230px; object-fit:cover; object-position:center 30%;
+    display:block; border-bottom:2px solid var(--accent);
+    filter:saturate(0.75) contrast(1.05) brightness(0.85);
+  }
+  .story-image.hidden{display:none;}
+  .story-body{ padding:22px 26px 4px; max-width:640px; margin:0 auto; }
+  .kicker{
+    font-family:var(--serif); font-size:.72rem; text-transform:uppercase; letter-spacing:.22em;
+    color:var(--accent); font-weight:700; margin:0 0 6px;
+  }
+  h1{
+    font-family:var(--display); color:var(--gold); font-weight:700; font-size:1.7rem;
+    margin:0 0 18px; letter-spacing:.02em; line-height:1.25;
+  }
+  p{ margin:0 0 14px; }
+  p:last-child{ margin-bottom:0; }
+  strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<img class="story-image" src="sect_anarch.jpg" alt="" onerror="this.classList.add('hidden')">
+<div class="story-body">
+  <p class="kicker">Sect</p>
+  <h1>Anarch</h1>
+  <p>It's not old, not really — not by the standard everything around it is old, the mills and the warehouses and the church spire down the road. Opened in '88 as The Adelphi Riverside, and there's still a few regulars who call it that out of habit rather than confusion, the way people do with a name that's outlived its own sign. Rain's coming down steady on the Irwell outside, and the windows have gone the colour of dishwater, and none of it matters much once you're through the door — the fire's lit, the regulars are arguing about nothing in particular, and the walls are still doing their decades-long job of holding up flyers for causes most of the city's forgotten it ever had.</p>
+  <p>Donny's in his usual corner, not drinking anything, which nobody who knows him finds strange. He's got the look of a man rehearsing an argument he hasn't had yet — jaw set, eyes on the door more than the conversation in front of him.</p>
+  <p>"You're not even listening," says the woman across the table, not for the first time tonight.</p>
+  <p>"I'm listening."</p>
+  <p>"You're waiting for someone to walk in so you can be right at them."</p>
+  <p>He doesn't deny it. That's fair, mostly. Manchester's been quiet lately in the way a held breath is quiet, and Donny's never been the sort of man who trusts quiet. He remembers a version of this city that didn't need anyone's permission to exist — no glass towers keeping score, no self-styled anything sitting in an office deciding who gets to matter. He's not precious about the memory. He's just not done being angry about what replaced it.</p>
+  <p>Somewhere behind the bar, a younger lad — new enough that he still flinches when the door bangs open in the wind — is being quietly shown how things work here. Not with a speech. Nobody in this pub gives speeches, not really, not the ones worth listening to. Just a nod, a name learned, a seat kept warm.</p>
+  <p>The door bangs open again. Rain, cold air, a stranger's silhouette against the streetlight outside.</p>
+  <p>Donny doesn't look surprised. He never does.</p>
+  <p>"Right," he says, standing. "Let's see what tonight's brought us, then."</p>
+</div>
+</body>
+</html>

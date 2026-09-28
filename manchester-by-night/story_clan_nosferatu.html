@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Nosferatu — Manchester by Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0a09; --panel:#1c1512; --line:#5c2318;
+    --ink:#e9e0cd; --ink-dim:#c9bfa9; --ink-mute:#8a7d72;
+    --accent:#8c3b28; --gold:#c98a3e;
+    --serif:'Barlow Condensed',Georgia,'Times New Roman',serif;
+    --display:'Cinzel',Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0; background:var(--bg); overflow-x:hidden;}
+  body{
+    font-family:var(--serif); font-size:1.08rem; line-height:1.6; color:var(--ink-dim);
+    padding:0 0 28px;
+  }
+  .story-image{
+    width:100%; height:230px; object-fit:cover; object-position:center 30%;
+    display:block; border-bottom:2px solid var(--accent);
+    filter:saturate(0.75) contrast(1.05) brightness(0.85);
+  }
+  .story-image.hidden{display:none;}
+  .story-body{ padding:22px 26px 4px; max-width:640px; margin:0 auto; }
+  .kicker{
+    font-family:var(--serif); font-size:.72rem; text-transform:uppercase; letter-spacing:.22em;
+    color:var(--accent); font-weight:700; margin:0 0 6px;
+  }
+  h1{
+    font-family:var(--display); color:var(--gold); font-weight:700; font-size:1.7rem;
+    margin:0 0 18px; letter-spacing:.02em; line-height:1.25;
+  }
+  p{ margin:0 0 14px; }
+  p:last-child{ margin-bottom:0; }
+  strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<img class="story-image" src="clan_nosferatu.jpg" alt="" onerror="this.classList.add('hidden')">
+<div class="story-body">
+  <p class="kicker">Clan</p>
+  <h1>Nosferatu</h1>
+  <p>An doesn't sleep here, not exactly — but this is where they settle when the night's quiet enough to let their guard down half an inch. Just a strip of cracked tarmac behind a row of shuttered units, a security light that's given up flickering and just stays half-lit, the distant hum of traffic somewhere that isn't here. An likes it best like this. Fewer people means fewer things to watch for. Watching for things is most of what An does now.</p>
+  <p>Someone's left a kid's toy jammed behind a drainpipe — a small plastic dog, faded from weather, forgotten by whoever dropped it months ago. An picks it up without quite deciding to, turns it over once, sets it back down like it might matter to come back for.</p>
+  <p>They don't talk about the wolves. Not to anyone at the Circle, not to the fledglings who come through looking rattled and lost, not even really to themself. But the body remembers what the mind won't say out loud — three coterie-mates, one bad night, and An the only one who walked away from ground that wasn't supposed to be anyone's to guard. Nobody's fault, everyone said afterward. An never quite believed that.</p>
+  <p>So now An checks the rooflines twice. Now An knows the smell of wrongness before their eyes do. Now, when a fledgling laughs too loud somewhere close by, something old and wordless in An tightens, just for a second, before easing back down.</p>
+  <p>"You're doing the thing," says a voice from the mouth of the alley — someone from the Circle, unbothered, used to finding An out here by now.</p>
+  <p>"What thing."</p>
+  <p>"The listening thing. Like something's coming."</p>
+  <p>An doesn't answer. Some nights, something is.</p>
+</div>
+</body>
+</html>

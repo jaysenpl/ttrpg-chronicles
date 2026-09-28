@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Toreador — Manchester by Night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0a09; --panel:#1c1512; --line:#5c2318;
+    --ink:#e9e0cd; --ink-dim:#c9bfa9; --ink-mute:#8a7d72;
+    --accent:#8c3b28; --gold:#c98a3e;
+    --serif:'Barlow Condensed',Georgia,'Times New Roman',serif;
+    --display:'Cinzel',Georgia,serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0; background:var(--bg); overflow-x:hidden;}
+  body{
+    font-family:var(--serif); font-size:1.08rem; line-height:1.6; color:var(--ink-dim);
+    padding:0 0 28px;
+  }
+  .story-image{
+    width:100%; height:230px; object-fit:cover; object-position:center 30%;
+    display:block; border-bottom:2px solid var(--accent);
+    filter:saturate(0.75) contrast(1.05) brightness(0.85);
+  }
+  .story-image.hidden{display:none;}
+  .story-body{ padding:22px 26px 4px; max-width:640px; margin:0 auto; }
+  .kicker{
+    font-family:var(--serif); font-size:.72rem; text-transform:uppercase; letter-spacing:.22em;
+    color:var(--accent); font-weight:700; margin:0 0 6px;
+  }
+  h1{
+    font-family:var(--display); color:var(--gold); font-weight:700; font-size:1.7rem;
+    margin:0 0 18px; letter-spacing:.02em; line-height:1.25;
+  }
+  p{ margin:0 0 14px; }
+  p:last-child{ margin-bottom:0; }
+  strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<img class="story-image" src="clan_toreador.jpg" alt="" onerror="this.classList.add('hidden')">
+<div class="story-body">
+  <p class="kicker">Clan</p>
+  <h1>Toreador</h1>
+  <p>The string quartet was competent. Pauline had stopped listening to them within the first four bars, not because they were bad — they weren't — but because competent had never once, in two centuries of listening, been the same thing as interesting. She'd learned the difference the hard way, the way she'd learned most things: by wanting, badly, to be good enough to notice it, back when she'd had nothing.</p>
+  <p>"You've heard about Manchester, of course," said the Ventrue beside her, refilling a glass he had no intention of drinking from.</p>
+  <p>"I've heard someone's calling himself Prince there." She didn't turn to look at him. She was watching a woman across the room instead — the particular way she held her cigarette holder, more performance than habit, clearly aware of being watched and enjoying it. Interesting. "That's not the same thing as having heard about it."</p>
+  <p>"Miers. London, originally. Campaigned for the old title back home, got nowhere, went and found himself a smaller pond instead."</p>
+  <p>"And what does he look like, doing it?"</p>
+  <p>The Ventrue blinked. "I — hadn't thought to ask."</p>
+  <p>"Nobody ever does." She finally turned to face him properly, and he had the good sense to look faintly chastened, the way most people did once she gave them her full attention rather than a fraction of it. "It's the only question that ever actually tells you anything. Anyone can hold a title. Whether they know how to wear it — whether the whole performance holds together under a real audience, or falls apart the moment someone actually looks — that's the thing worth knowing."</p>
+  <p>She thought of her own reflection, decades ago, in rooms exactly like this one, when she'd had to learn every gesture from nothing, teach herself taste the way other people were simply born already fluent in it. She still didn't know whether she was proud of how well she'd learned or simply hadn't finished being angry that she'd had to. Both, most nights. It was, if nothing else, why she could always tell the difference between someone performing confidence and someone who'd actually earned the right to it.</p>
+  <p>"There's talk he won't hold it. Thin court. No Elders left to back him."</p>
+  <p>"Then he's either extraordinary," she said, "or he's exactly as thin as the rest of it, and simply hasn't been looked at properly yet. Either way, that's not a question anyone answers from here."</p>
+  <p>She set her glass down, already composing the letter in her head — not to Miers. Announcements were so much more interesting than introductions, and she intended to arrive already knowing exactly which one he'd turn out to be.</p>
+</div>
+</body>
+</html>
