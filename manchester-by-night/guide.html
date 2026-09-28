@@ -190,6 +190,7 @@
     display:none; align-items:center; justify-content:center; padding:24px;
   }
   .modal-overlay.active{ display:flex; }
+  html.modal-open, body.modal-open{ overflow:hidden !important; height:100%; }
   .modal-box{ position:relative; width:100%; max-width:560px; }
   .modal-box iframe{
     display:block; width:100%; height:min(80vh, 640px); border:0; border-radius:4px;
@@ -653,10 +654,14 @@
   function openDoc(src){
     frame.src = src;
     overlay.classList.add('active');
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
   }
   function closeDoc(){
     overlay.classList.remove('active');
     frame.src = '';
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
   }
   document.querySelectorAll('.found-doc').forEach(function(el){
     el.addEventListener('click', function(){ openDoc(el.dataset.doc); });
