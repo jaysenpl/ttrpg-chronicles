@@ -203,6 +203,8 @@
   }
   .modal-close:hover{ color:var(--accent); }
 
+  .coterie-photo{margin:22px auto 0; max-width:560px;}
+  .coterie-photo img{display:block; width:100%; height:auto; border:1px solid var(--line); box-shadow:0 10px 30px rgba(0,0,0,.45);}
   .index-grid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:22px;}
   .index-card{
     background:var(--panel); border:1px solid var(--line); border-radius:2px; padding:18px 20px;
@@ -376,6 +378,7 @@
       <button data-tab="map">The City</button>
       <button data-tab="resources">Resources</button>
       <button data-tab="afterdark">After Dark</button>
+      <button data-tab="coterie">Coterie</button>
     </nav>
 
     <div class="content">
@@ -403,6 +406,10 @@
       </div>
       <div class="index-card" data-goto="afterdark">
         <div class="itxt"><h3>After Dark</h3><p>Night Bulletins — sect, clan, and whatever's currently being whispered about somebody else.</p></div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="index-card" data-goto="coterie">
+        <div class="itxt"><h3>Coterie</h3><p>Five strangers in a Manchester bar. One of them doesn't show up properly in photos.</p></div>
         <div class="arrow">→</div>
       </div>
     </div>
@@ -596,6 +603,15 @@
         <span class="rnote">Frida Boucher's own margin notes on a feeding gone wrong — the kind of detail a Sheriff's investigator writes down only when she can't stop noticing it.</span>
       </li>
     </ul>
+  </section>
+
+  <!-- COTERIE -->
+  <section class="panel" data-panel="coterie">
+    <h2 class="section-title"><span class="num">05</span>Coterie</h2>
+    <p class="lede">Five strangers in a Manchester bar. One of them doesn't show up properly in photos.</p>
+    <figure class="coterie-photo">
+      <img src="coterie_group.jpg" alt="The coterie gathered around a table in a dim brick-walled Manchester bar at night">
+    </figure>
   </section>
 
 </main>
