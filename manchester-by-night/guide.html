@@ -166,6 +166,9 @@
     padding-bottom:8px; border-bottom:1px solid var(--line);
   }
   h3.part-title + h3{margin-top:16px;}
+  .kumu-frame{border:1px solid var(--line); background:#111; margin:14px 0 6px;}
+  .kumu-frame iframe{display:block; width:100%; height:620px; border:0;}
+  @media (max-width:640px){ .kumu-frame iframe{height:480px;} }
   .callout{
     background:rgba(140,59,40,0.07); border:1px solid var(--line); border-left:3px solid var(--accent);
     padding:16px 18px; margin:18px 0;
@@ -395,6 +398,13 @@
     <figure class="coterie-photo">
       <img src="coterie_group.jpg?v=2" alt="The coterie gathered around a table in a dim brick-walled Manchester bar at night">
     </figure>
+
+    <h3 class="part-title">Who Owes Whom</h3>
+    <p class="dim">Sires, debts, grudges and the people you'd rather not owe. Drag to move around, pinch or use the controls to zoom, and click anyone for more.</p>
+    <div class="kumu-frame">
+      <iframe src="https://embed.kumu.io/00e6e0424dbb1d927da448f55eeb9964#coterie" title="Coterie relationship map" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <p class="map-legend-note"><a href="https://embed.kumu.io/00e6e0424dbb1d927da448f55eeb9964#coterie" target="_blank" rel="noopener">Open the map full screen ↗</a></p>
   </section>
 
   <!-- MAP -->
