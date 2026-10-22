@@ -161,6 +161,11 @@
   .lede{font-size:1.1rem; color:var(--ink-dim); font-style:italic; margin-bottom:22px; font-family:var(--display); font-weight:500;}
   strong{color:var(--ink); font-weight:700;}
 
+  h3.part-title{
+    font-size:1rem; color:var(--gold); letter-spacing:.06em; margin:40px 0 8px;
+    padding-bottom:8px; border-bottom:1px solid var(--line);
+  }
+  h3.part-title + h3{margin-top:16px;}
   .callout{
     background:rgba(140,59,40,0.07); border:1px solid var(--line); border-left:3px solid var(--accent);
     padding:16px 18px; margin:18px 0;
@@ -373,85 +378,23 @@
     </div>
 
     <nav class="tabs" id="tabs">
-      <button data-tab="index" class="active">Start Here</button>
-      <button data-tab="primer">The Primer</button>
+      <button data-tab="coterie" class="active">Coterie</button>
       <button data-tab="map">The City</button>
-      <button data-tab="resources">Resources</button>
       <button data-tab="afterdark">After Dark</button>
-      <button data-tab="coterie">Coterie</button>
+      <button data-tab="resources">Resources</button>
     </nav>
 
     <div class="content">
 
 <main>
 
-  <!-- START HERE -->
-  <section class="panel active" data-panel="index">
-    <h2 class="section-title"><span class="num">00</span>Start Here</h2>
-    <p class="lede">Everything you need before session zero, in one place.</p>
-    <p>Read <strong>The Primer</strong> first, whatever your experience with the game. It's short, spoiler-free, and it's what your character would reasonably know walking into this. <strong>The City</strong> is the map — where things are, and who holds them, as far as anyone's told. <strong>Resources</strong> are official, spoiler-free rules references, safe to use any time. <strong>After Dark</strong> is the gossip — sect, clan, and rumour, worth a browse whenever the mood takes you.</p>
-
-    <div class="index-grid">
-      <div class="index-card" data-goto="primer">
-        <div class="itxt"><h3>The Primer</h3><p>Read this first. The city, the Second Inquisition, what's changed if you've played before.</p></div>
-        <div class="arrow">→</div>
-      </div>
-      <div class="index-card" data-goto="map">
-        <div class="itxt"><h3>The City</h3><p>Interactive map of Manchester — where things are, and who — as far as anyone's told — holds them.</p></div>
-        <div class="arrow">→</div>
-      </div>
-      <div class="index-card" data-goto="resources">
-        <div class="itxt"><h3>Resources</h3><p>Official spoiler-free rules references, safe to use any time.</p></div>
-        <div class="arrow">→</div>
-      </div>
-      <div class="index-card" data-goto="afterdark">
-        <div class="itxt"><h3>After Dark</h3><p>Night Bulletins — sect, clan, and whatever's currently being whispered about somebody else.</p></div>
-        <div class="arrow">→</div>
-      </div>
-      <div class="index-card" data-goto="coterie">
-        <div class="itxt"><h3>Coterie</h3><p>Five strangers in a Manchester bar. One of them doesn't show up properly in photos.</p></div>
-        <div class="arrow">→</div>
-      </div>
-    </div>
-
-    <div class="callout" style="margin-top:28px;">
-      <h4>Content Note</h4>
-      <p>Not a safety-tool prompt — just an honest heads-up about what this chronicle leans into: drug and alcohol use, questionable consent, kidnapping, self-harm, gun violence, human trafficking, torture, and violent death or murder. The kidnapping, self-harm, and trafficking threads in particular run through several Embrace backstories and later chapters — not just as one-off scenes.</p>
-    </div>
-  </section>
-
-  <!-- PRIMER -->
-  <section class="panel" data-panel="primer">
-    <h2 class="section-title"><span class="num">01</span>The Primer</h2>
-    <p class="lede">What you'd reasonably know, or reasonably find out, before building a character. Real city, real stakes. Nothing here spoils your own story — that part's still yours to discover.</p>
-
-    <h3>The City</h3>
-    <p>This is Manchester, present day — not a fictional stand-in, not a generic gothic elsewhere. Red brick, wet pavement, sodium streetlight, trams running late into the night. The kind of city that never quite finished being industrial and never quite became something else instead, which turns out to suit it rather well.</p>
-    <p>Kindred society here divides roughly three ways, and you'll find your own place in that division by playing, not by being told it upfront. Broadly: a <strong>Camarilla</strong> court that runs on rules and rank, an <strong>Anarch</strong> scene built on freedom and mutual protection instead, and a third thing — quieter, older, harder to categorise — that doesn't map neatly onto either. All three are real options. None are obviously correct. Where your character actually ends up is something we'll work out together in play.</p>
-
-    <h3>A City Still Unsettled</h3>
-    <p>About a decade ago, London fell. Nobody young enough to be reading this was there to see it, but everybody's heard something — in six months as Kindred, you'd have picked up at least a fragment of it. The details are murky and mostly secondhand. The fact of it isn't: London's Kindred society came apart, badly, and the wider world of vampire politics still hasn't fully steadied since. Part of what did it — or sped it along — is the Second Inquisition.</p>
-
-    <h3>The Second Inquisition</h3>
-    <p>Forget torches and wooden stakes. This isn't one organisation with a name and a headquarters — it's a loose, uncoordinated shorthand for the fact that the modern world has, in scattered pockets, quietly worked out that vampires are real. Governments. Intelligence services. Private contractors. Tech firms. The odd religious group. Each arrived independently, each acting their own way, usually without knowing the others exist.</p>
-    <p>In practice: surveillance rather than superstition. Financial forensics, data analytics, facial recognition, forensic pathology, patient long-term operations rather than a mob with pitchforks. Most of them don't know what they're actually hunting — they just know something doesn't add up, and they're very good at noticing that. It's not in your face every night. It's real, it's out there, and every Kindred old enough to remember London takes it seriously. You should too.</p>
-    <p class="dim">For most fledgling Kindred this isn't a Session One problem — you're small, new, and nobody's watching you specifically yet. But it shapes the world: why older Kindred are cautious, why Masquerade breaches matter far beyond "other vampires might see," and why things that used to be safe — a scene at a hospital, a body that doesn't add up, a gap in someone's financial records — really aren't anymore.</p>
-
-    <div class="callout gold">
-      <h4>Playing Law Enforcement / Intelligence / Security</h4>
-      <p>Worth thinking about rather than avoiding, and not a reason to rule the concept out — if anything it's one of the richer hooks available. Your character used to sit inside, or close to, exactly the machinery now capable of noticing something's wrong with people like them. Old colleagues, old instincts, old access, all now aimed at a version of the world your character is quietly no longer part of. Go in with eyes open: this is a concept built on proximity to real danger, not a shortcut around it.</p>
-    </div>
-
-    <h3>Old Stories</h3>
-    <p>There are older stories too, the kind nobody quite confirms or denies — something about a god who once walked these streets, centuries back, and who some say is stirring again after a long silence. Nobody agrees on what that means, or that it means anything at all. Worth knowing the rumour exists. Not worth building a character around chasing it down — if it matters, it'll find you.</p>
-
-    <h3>If You've Played Vampire Before</h3>
-    <p>A few things won't match what you remember, whichever edition you last played. The Assamites are now Banu Haqim, the Followers of Set are now Ministry, and the Giovanni — plus several smaller death-focused bloodlines — merged into a single clan called Hecata. None vanished; they're all playable here, just renamed and often reshaped.</p>
-    <p>Clan politics have shifted too. The Tremere Pyramid is gone — the clan's fractured into competing, independent Houses. The Lasombra, historically solid Sabbat, have genuinely split, with a real faction formally joining the Camarilla. The Tzimisce have scattered across Sabbat loyalists, Anarchs, and independents. Brujah and Gangrel don't have one clean sect loyalty — like most clans, they turn up everywhere. The Sabbat itself is badly diminished by the Second Inquisition, no longer the organised sect it once was — but that's not the same as gone. Kindred still lower their voices when they bring it up.</p>
-    <p class="dim">Don't assume any of this maps directly onto Manchester specifically — this city has its own answers, which you'll learn as you go.</p>
-
-    <h3>Before Session Zero</h3>
-    <p>Have a rough idea who your character was before the Embrace — not a finished backstory, just a shape. What did they do? What did they care about? What are they still holding onto, now they're not what they used to be? Everything else — clan, Discipline, the specifics of how you became what you are — gets built together, at the table, on the night.</p>
+  <!-- COTERIE -->
+  <section class="panel active" data-panel="coterie">
+    <h2 class="section-title"><span class="num">01</span>Coterie</h2>
+    <p class="lede">Five strangers in a Manchester bar. One of them doesn't show up properly in photos.</p>
+    <figure class="coterie-photo">
+      <img src="coterie_group.jpg?v=2" alt="The coterie gathered around a table in a dim brick-walled Manchester bar at night">
+    </figure>
   </section>
 
   <!-- MAP -->
@@ -466,8 +409,10 @@
 
   <!-- RESOURCES -->
   <section class="panel" data-panel="resources">
-    <h2 class="section-title"><span class="num">03</span>Resources</h2>
-    <p class="lede">Official, spoiler-free, and safe to use any time — none of these give away anything about this specific chronicle.</p>
+    <h2 class="section-title"><span class="num">04</span>Resources</h2>
+    <p class="lede">Rules references, the city's backstory, and the honest heads-up about what this chronicle leans into.</p>
+    <h3 class="part-title">Rules References</h3>
+    <p class="dim">Official, spoiler-free, and safe to use any time — none of these give away anything about this specific chronicle.</p>
     <ul class="resource-list">
       <li>
         <span class="tag">PDF</span>
@@ -485,12 +430,32 @@
         <span class="rnote">One-page overview of every clan's title, drives, Bane, Compulsion, and Disciplines — a quick visual lookup rather than a step-by-step walkthrough.</span>
       </li>
     </ul>
-    <p class="dim">You don't need to have read anything before session zero — character creation itself walks you through what you need. These are just a head start if you want one.</p>
+
+    <h3 class="part-title">The City's Story</h3>
+    <h3>The City</h3>
+    <p>This is Manchester, present day — not a fictional stand-in, not a generic gothic elsewhere. Red brick, wet pavement, sodium streetlight, trams running late into the night. The kind of city that never quite finished being industrial and never quite became something else instead, which turns out to suit it rather well.</p>
+    <p>Kindred society here divides roughly three ways, and you'll find your own place in that division by playing, not by being told it upfront. Broadly: a <strong>Camarilla</strong> court that runs on rules and rank, an <strong>Anarch</strong> scene built on freedom and mutual protection instead, and a third thing — quieter, older, harder to categorise — that doesn't map neatly onto either. All three are real options. None are obviously correct. Where your character actually ends up is something we'll work out together in play.</p>
+
+    <h3>A City Still Unsettled</h3>
+    <p>About a decade ago, London fell. Nobody young enough to be reading this was there to see it, but everybody's heard something — in six months as Kindred, you'd have picked up at least a fragment of it. The details are murky and mostly secondhand. The fact of it isn't: London's Kindred society came apart, badly, and the wider world of vampire politics still hasn't fully steadied since. Part of what did it — or sped it along — is the Second Inquisition.</p>
+
+    <h3>The Second Inquisition</h3>
+    <p>Forget torches and wooden stakes. This isn't one organisation with a name and a headquarters — it's a loose, uncoordinated shorthand for the fact that the modern world has, in scattered pockets, quietly worked out that vampires are real. Governments. Intelligence services. Private contractors. Tech firms. The odd religious group. Each arrived independently, each acting their own way, usually without knowing the others exist.</p>
+    <p>In practice: surveillance rather than superstition. Financial forensics, data analytics, facial recognition, forensic pathology, patient long-term operations rather than a mob with pitchforks. Most of them don't know what they're actually hunting — they just know something doesn't add up, and they're very good at noticing that. It's not in your face every night. It's real, it's out there, and every Kindred old enough to remember London takes it seriously. You should too.</p>
+    <p class="dim">For most fledgling Kindred this isn't an every-night problem — you're small, new, and nobody's watching you specifically yet. But it shapes the world: why older Kindred are cautious, why Masquerade breaches matter far beyond "other vampires might see," and why things that used to be safe — a scene at a hospital, a body that doesn't add up, a gap in someone's financial records — really aren't anymore.</p>
+
+    <h3>Old Stories</h3>
+    <p>There are older stories too, the kind nobody quite confirms or denies — something about a god who once walked these streets, centuries back, and who some say is stirring again after a long silence. Nobody agrees on what that means, or that it means anything at all. Worth knowing the rumour exists. Not worth chasing it down — if it matters, it'll find you.</p>
+
+    <div class="callout" style="margin-top:36px;">
+      <h4>Content Note</h4>
+      <p>Not a safety-tool prompt — just an honest heads-up about what this chronicle leans into: drug and alcohol use, questionable consent, kidnapping, self-harm, gun violence, human trafficking, torture, and violent death or murder. The kidnapping, self-harm, and trafficking threads in particular run through several Embrace backstories and later chapters — not just as one-off scenes.</p>
+    </div>
   </section>
 
   <!-- AFTER DARK -->
   <section class="panel" data-panel="afterdark">
-    <h2 class="section-title"><span class="num">04</span>After Dark</h2>
+    <h2 class="section-title"><span class="num">03</span>After Dark</h2>
     <p class="lede">Night Bulletins — what the city says about itself once the pubs shut. Sect loyalties, clan reputations, feeding habits, and whoever's currently the subject of somebody else's whispering. Nobody signed their name to any of it.</p>
 
     <h3>Sect</h3>
@@ -605,15 +570,6 @@
     </ul>
   </section>
 
-  <!-- COTERIE -->
-  <section class="panel" data-panel="coterie">
-    <h2 class="section-title"><span class="num">05</span>Coterie</h2>
-    <p class="lede">Five strangers in a Manchester bar. One of them doesn't show up properly in photos.</p>
-    <figure class="coterie-photo">
-      <img src="coterie_group.jpg?v=2" alt="The coterie gathered around a table in a dim brick-walled Manchester bar at night">
-    </figure>
-  </section>
-
 </main>
 
       <footer class="site-footer">
@@ -653,14 +609,14 @@
   document.querySelectorAll('.index-card').forEach(function(c){
     c.addEventListener('click', function(){ show(c.dataset.goto); });
   });
-  var start = 'index';
+  var start = 'coterie';
   try{
     var h = (location.hash || '').replace('#','');
     var saved = sessionStorage.getItem('mbn_tab');
     if(h && document.querySelector('[data-panel="'+h+'"]')) start = h;
     else if(saved && document.querySelector('[data-panel="'+saved+'"]')) start = saved;
   }catch(e){}
-  if(start !== 'index') show(start);
+  if(start !== 'coterie') show(start);
 })();
 
 /* ---------- Found-document modal ---------- */
